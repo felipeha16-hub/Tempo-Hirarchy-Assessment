@@ -3,11 +3,12 @@ package com.tempo.hierarchy.domain.model;
 
 public interface Hierarchy {
 
-    int size();
-    int nodeId(int index);
+    int size(); // Returns the total number of nodes.
+    int nodeId(int index); //Returns the node ID at the position specified by the index.
+    int depth(int index); //Returns the depth of the node at the position specified by the index.
 
-    int depth(int index);
 
+    // Default method for visualizing the hierarchy.
     default String formatString() {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < size(); i++) {
@@ -16,6 +17,10 @@ public interface Hierarchy {
         }
         sb.append("]");
         return sb.toString();
+    }
+    // Returns true if the hierarchy has no nodes, false otherwise
+    default boolean isEmpty() {
+        return size() == 0;
     }
 }
 
